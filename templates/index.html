@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Prediction</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//code.jquery.com/jquery.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="/js/index.js"></script>
+    </head>
+    <body>
+        <div class="container" style="margin-top: 10px;">
+            <h2>select any job seekers to get suggested job providers</h2>
+            <div class="col-md-4">
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>*</th>
+                        <th>jobSeeker</th>
+                    </tr>
+                    {% for jobSeeker in jobSeekerData %}
+                        <tr>
+                            <td><label>{{loop.index}}</label></td>
+                            <td><input type="radio" name="jobSeeker" id="jobSeeker" value="{{loop.index0}}"/></td>
+                            <td>
+                                {% for jobSeekerSkills in jobSeeker %}
+                                    {{jobSeekerSkills }}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-md-4">
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>jobProvider</th>
+                    </tr>
+                    {% for jobProvider in jobProviderData %}
+                        <tr>
+                            <td><label id="jobProvider_{{loop.index}}">{{loop.index}}</label></td>
+                            <td>
+                                {% for jobProviderSkills in jobProvider %}
+                                    {{jobProviderSkills }}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div id="suggestedProvider" class="col-md-4"></div>
+        </div>
+    </body>
+</html>
