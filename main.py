@@ -18,7 +18,6 @@ import os
 import cgi
 import webapp2
 import jinja2
-import re
 from predict import predict
 
 # env for loading local template files
